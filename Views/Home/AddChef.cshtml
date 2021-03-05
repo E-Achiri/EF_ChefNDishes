@@ -1,0 +1,30 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ChefNDishes.Models
+
+<div class="text-center">
+    <h1 class="display-4"> Add a Chef! </h1>
+    
+    @* <h3> Check out our roster of Chefs!</h3> *@
+    <a href="/"> Home</a>
+    <br>
+
+    <hr>
+    @model Chef
+    <form asp-action="AddChef" asp-controller="Home" method="post">
+        <label asp-for="FirstName">First Name</label>
+            <span asp-validation-for="FirstName"></span>
+            <input asp-for="FirstName"><br>
+
+        <label asp-for="LastName">Last Name</label>
+            <span asp-validation-for="LastName"></span>
+            <input asp-for="LastName"><br>
+
+        <label asp-for="DateOfBirth">Date of Birth</label>
+            <span asp-validation-for="DateOfBirth"></span>
+            <input asp-for="DateOfBirth"><br>
+
+        <input type="submit" value="Add Chef">
+    </form>
+
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>

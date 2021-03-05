@@ -1,0 +1,70 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ChefNDishes.Models
+<div class="text-center">
+    <h1 class="display-4"> Add a Dish! </h1>
+    <br>
+    @* <h3> Check out our roster of Chefs!</h3> *@
+    <a href="/"> Add a Chef </a>
+    <hr>
+
+    @* <table class="cdtable">
+        <tr>
+            <th>
+                Name
+             </th>
+            <th>
+                Age
+             </th>
+            <th>
+                # of Dishes
+            </th>
+        </tr>
+
+
+    </table> *@
+
+    @model Dish
+    <form asp-action="AddDish" asp-controller="Home">
+        <div class="formsegment">
+            <label asp-for="NameOfDish">Name of Dish</label>
+            <span asp-validation-for="NameOfDish"></span>
+            <input asp-for="NameOfDish"><br>
+
+
+            <label asp-for="Calories"># of Calories</label>
+            <span asp-validation-for="Calories"></span>
+            <input asp-for="Calories" type="number"><br>
+
+            <label asp-for="Description">Description</label>
+            <span asp-validation-for="Description"></span>
+            <input asp-for="Description" type="textarea"><br>
+
+            <label asp-for="ChefId">Chef</label>
+            <span asp-validation-for="ChefId"></span>
+            <select asp-for="ChefId">
+                @foreach (var chef 
+                in 
+                ViewBag.ChefList){
+                    <option value=@chef.ChefId>@chef.FirstName @chef.LastName</option>
+                }
+                
+            </select><br>
+
+            
+            <label asp-for="Tastiness">Tastiness</label>
+            <span asp-validation-for="Tastiness"></span>
+            <select asp-for="Tastiness">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+
+            <input type="submit" value="Add Dish">
+
+        </div>
+    </form>
+
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>

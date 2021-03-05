@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> <a href="/">Chefs</a> |  Dishes </h1>
+    <br>
+    <h3> Yum, take a look at our tasty dishes!</h3>
+    <a href="/dishes/new"> Add a Dish </a>
+    <hr>
+
+    <table class="cdtable">
+        <tr>
+            <th>
+                Name
+             </th>
+            <th>
+                Chef
+             </th>
+            <th>
+                Tastiness
+            </th>
+            <th>
+                Calories
+            </th>
+        </tr>
+        @foreach (var dish in ViewBag.DishList){
+        <tr>
+            <td>
+                @dish.NameOfDish
+             </td>
+            <td>
+                @dish.TheChef.FirstName @dish.TheChef.LastName
+             </td>
+            <td>
+                @dish.Tastiness
+            </td>
+            <td>
+                @dish.Calories
+            </td>
+        </tr>
+        }
+    </table>
+
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>

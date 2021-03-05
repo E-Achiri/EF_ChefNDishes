@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var today = DateTime.Today;
+}
+@using System.Collections.Generic;
+
+
+<div class="text-center">
+    <h1 class="display-4"> Chefs | <a href="/dishes">Dishes</a>  </h1>
+    <br>
+    <h3> Check out our roster of Chefs!</h3>
+    <a href="/new"> Add a Chef </a>
+    <hr>
+
+    <table class="cdtable">
+        <tr>
+            <th>
+                Name
+             </th>
+            <th>
+                Age
+             </th>
+            <th>
+                # of Dishes
+            </th>
+        </tr>
+
+        @foreach (var chef in ViewBag.ChefList){
+            <tr>
+                <td>
+                    @chef.FirstName @chef.LastName
+                </td>
+                <td>
+                    @(@today.Year - @chef.DateOfBirth.Year)
+                </td>
+                <td>
+                    @* @{
+                        if(chef.DishList.Count == null){
+                            <p> 0 </p>
+                        } else{
+                            @chef.DishList.Count
+                        }
+                    } *@
+                    @chef.DishList?.Count
+                
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
